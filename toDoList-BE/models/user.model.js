@@ -1,4 +1,5 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
+
 const userSchema = new Schema(
   {
     email: { type: String, required: true, unique: true }, // Primary identifier for users
@@ -14,6 +15,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model.user || model("user", userSchema);
+const User = model("user", userSchema);
 
 export default User;

@@ -13,20 +13,23 @@ const app = express();
 app.use(express.json());
 
 // For debugging
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 
-// Ensure database is connected before starting the server
+// Database connection
 try {
   await connection();
 
+  console.log("Connected to database:", mongoose.connection.db.databaseName);
+
   // Mounting routes
   app.use("/auth", authRoutes);
-  app.use("/users", userRoutes);
+  app.use("/user", userRoutes);
   app.use("/task", taskRoute);
 
   // Not found middleware
   app.use(notFound);
 
+  // Start the server
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });

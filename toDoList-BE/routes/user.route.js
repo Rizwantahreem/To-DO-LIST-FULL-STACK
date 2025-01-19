@@ -1,5 +1,10 @@
 import express from "express";
-import { getUsers } from "../controllers/user.controller.js";
+import { getUser, getUsers } from "../controllers/user.controller.js";
+import { AuthenticateUser } from "../middleware/authentication.middleware.js";
+
 const userRoutes = express.Router();
-userRoutes.get("/", getUsers);
+
+userRoutes.get("/", AuthenticateUser, getUsers);
+userRoutes.get("/:id", AuthenticateUser, getUser);
+
 export default userRoutes;

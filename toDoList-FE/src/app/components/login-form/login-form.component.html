@@ -1,0 +1,155 @@
+<div class="container">
+  <div class="company-container">
+    <ng-container class="app-name">
+      <div class="heading-circle">
+        <h1>Goal Managment System</h1>
+      </div>
+    </ng-container>
+    <ol>
+      <li>Organize and prioritize your tasks.</li>
+      <li>Track progress with your personalized dashboard.</li>
+      <li>Set deadlines and never miss a due date.</li>
+      <li>Stay on top of your tasks with reminders.</li>
+      <li>Add and edit tasks with ease.</li>
+      <li>Visualize your progress with charts and stats.</li>
+    </ol>
+    <div class="end-shape"></div>
+    <h3 class="slogan">Let's build the system rather setting the goals!</h3>
+  </div>
+
+  <!-- FORMS -->
+  <ng-container class="form-container">
+    <div class="form-container">
+      <div class="app-login-form">
+        <!-- FORM TOGGLE  -->
+        <div class="toggle-container">
+          <div
+            class="toggle-button"
+            [ngClass]="isLogInForm ? 'active' : ''"
+            (click)="switchForm(true)"
+          >
+            Log In
+          </div>
+          <div
+            class="toggle-button"
+            [ngClass]="!isLogInForm ? 'active' : ''"
+            (click)="switchForm(false)"
+          >
+            Sign Up
+          </div>
+        </div>
+
+        <!-- log in form -->
+        <ng-container *ngIf="isLogInForm">
+          <form [formGroup]="form">
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+                formControlName="email"
+              />
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="floatingInput"
+                placeholder=""
+                style="width: 252px"
+                formControlName="password"
+              />
+              <label for="floatingInput">Password </label>
+            </div>
+            <div class="error-msg" *ngIf="error && error.length > 0">
+              {{ error }}
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="submitForm()"
+            >
+              Sign in
+            </button>
+          </form>
+        </ng-container>
+
+        <ng-container *ngIf="!isLogInForm">
+          <form [formGroup]="form">
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="floatingInputEmail"
+                placeholder="name@example.com"
+                style="width: 250px"
+                formControlName="email"
+              />
+              <label for="floatingInputEmail">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInputName"
+                placeholder="Your Name"
+                style="width: 250px"
+                formControlName="name"
+              />
+              <label for="floatingInputName">Name </label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="floatingInputPassword"
+                placeholder="Password"
+                style="width: 250px"
+              />
+              <label for="floatingInputPassword">Password </label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="floatingInputConfirmPassword"
+                placeholder="Confirm Password"
+                style="width: 250px"
+                formControlName="confirmPassword"
+              />
+              <label for="floatingInputConfirmPassword"
+                >Confirm Password
+              </label>
+            </div>
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheck"
+                style="width: 16px"
+                formControlName="agreeTerms"
+              />
+              <label class="form-check-label" for="flexCheck">
+                I agree with terms.
+              </label>
+            </div>
+
+            <div class="error-msg" *ngIf="error && error.length > 0">
+              {{ error }}
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="submitForm()"
+            >
+              Sign up
+            </button>
+          </form>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PROVIDERS } from '../../constants';
+import { PROVIDERS } from '../../../constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { UserService } from '../services/user.service';
-import { ILogIn } from '../../interfaces';
+import { UserService } from '../../services/user.service';
+import { ILogIn } from '../../../interfaces';
 import { Router } from '@angular/router';
 
 @Component({

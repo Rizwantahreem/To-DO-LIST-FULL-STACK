@@ -35,8 +35,9 @@ export const signUp = async (req, res, next) => {
     const token = generateToken(newUser._id);
     res.cookie("token", token, {
       httpOnly: true, // Prevents client-side JavaScript access (mitigates XSS)
-      sameSite: "strict", // Prevents CSRF (Cross-Site Request Forgery) attacks
+      sameSite: "lax", // Prevents CSRF (Cross-Site Request Forgery) attacks
       maxAge: 3600 * 4, // Cookie expiration time (4 hour here, matches JWT expiration)
+      secure: false,
     });
 
     res.status(201).json({ message: "User created successfully" });
@@ -69,8 +70,9 @@ export const logIn = async (req, res, next) => {
     const token = generateToken(user._id);
     res.cookie("token", token, {
       httpOnly: true, // Prevents client-side JavaScript access (mitigates XSS)
-      sameSite: "strict", // Prevents CSRF (Cross-Site Request Forgery) attacks
+      sameSite: "lax", // Prevents CSRF (Cross-Site Request Forgery) attacks
       maxAge: 3600 * 4, // Cookie expiration time (4 hour here, matches JWT expiration)
+      secure: false,
     });
 
     res.status(200).json({ messsage: "login successfullly" });

@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import mongoose from "mongoose";
 import connection from "./connection/DB.connection.js";
 import userRoutes from "./routes/user.route.js";
@@ -20,6 +21,14 @@ try {
   await connection();
 
   console.log("Connected to database:", mongoose.connection.db.databaseName);
+
+  app.use(
+    cors({
+      origin: "http://localhost:4200",
+      methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+      credentials: true, // Allow cookies if needed
+    })
+  );
 
   // Mounting routes
   app.use("/auth", authRoutes);

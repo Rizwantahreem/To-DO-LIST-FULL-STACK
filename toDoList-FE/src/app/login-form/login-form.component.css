@@ -1,0 +1,91 @@
+* {
+  width: max-content;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  padding: 1pc;
+}
+
+.app-login-form {
+  display: flex;
+  flex-direction: column; /* Align form items vertically */
+  justify-content: center; /* Center content */
+  align-items: center; /* Center align inputs */
+  padding: 3pc 2pc;
+  width: 350px; /* Fixed width for the form */
+  box-shadow: -6px -6px 18px #d9e9f1;
+  border-radius: 10px; /* Rounded corners */
+  background-color: white; /* Background for form */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.app-login-form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  align-self: flex-start; /* Align labels to the left */
+}
+
+.app-login-form input[type="text"],
+.app-login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.app-login-form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff; /* Button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.app-login-form button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.error-msg {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 13px;
+}
+
+/* TOGGLE BUTTON */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* overflow: hidden; */
+  border-radius: 20%; /* Top-left, Top-right, Bottom-right, Bottom-left */
+}
+
+.toggle-button {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 117px;
+  margin-bottom: 23px;
+}
+
+.toggle-button.active {
+  background-color: #007bff; /* Active button color */
+  color: #fff;
+}
+
+.toggle-button:not(.active) {
+  background-color: #f0f0f0; /* Inactive button color */
+  color: #333;
+}

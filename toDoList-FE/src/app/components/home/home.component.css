@@ -1,0 +1,51 @@
+/* General container for the entire page */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content wrapper */
+.content {
+  display: flex;
+  flex: 1;
+  height: 88vh;
+}
+
+/* Sidebar navigation styles */
+.side-nav {
+  width: 200px; /* Fixed width for the sidebar */
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav li {
+  margin-bottom: 10px;
+}
+
+.side-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.side-nav a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1; /* Take up the remaining width */
+  padding: 20px;
+  background-color: #ffffff;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}

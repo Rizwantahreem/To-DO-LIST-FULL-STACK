@@ -1,0 +1,31 @@
+.contianer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(118, 172, 243);
+  box-shadow: 0 5px 7px rgb(67, 127, 206);
+  margin: 0;
+  padding: 0;
+}
+
+.greetings {
+  padding: 10px;
+  color: antiquewhite;
+  font-style: italic;
+  font-weight: 400;
+  padding: 20px;
+  margin-right: 1pc;
+}
+
+.user-settings {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* padding: 10px; */
+}
+
+.large-icon {
+  font-size: 26px;
+  margin: 14px;
+  color: antiquewhite;
+}

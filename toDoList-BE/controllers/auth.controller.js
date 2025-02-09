@@ -34,8 +34,7 @@ export const signUp = async (req, res, next) => {
     // assign token to the user as a cookie
     const token = generateToken(newUser._id);
     res.cookie("token", token, {
-      httpOnly: true, // Prevents client-side JavaScript access (mitigates XSS)
-      sameSite: "lax", // Prevents CSRF (Cross-Site Request Forgery) attacks
+      httpOnly: false, // Prevents client-side JavaScript access (mitigates XSS), cause I want to access the JS
       maxAge: 3600 * 4, // Cookie expiration time (4 hour here, matches JWT expiration)
       secure: false,
     });
@@ -69,8 +68,7 @@ export const logIn = async (req, res, next) => {
 
     const token = generateToken(user._id);
     res.cookie("token", token, {
-      httpOnly: true, // Prevents client-side JavaScript access (mitigates XSS)
-      sameSite: "lax", // Prevents CSRF (Cross-Site Request Forgery) attacks
+      httpOnly: false, // Prevents client-side JavaScript access (mitigates XSS), cause I want to access the JS
       maxAge: 3600 * 4, // Cookie expiration time (4 hour here, matches JWT expiration)
       secure: false,
     });

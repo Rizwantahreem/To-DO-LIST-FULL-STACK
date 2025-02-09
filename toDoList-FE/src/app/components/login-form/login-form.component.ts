@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PROVIDERS } from '../../../constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css',
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, OnDestroy {
   private subscription: Array<Subscription> = [];
   provider: string = PROVIDERS.local;
   form!: FormGroup;
@@ -54,8 +54,9 @@ export class LoginFormComponent implements OnInit {
           return;
         }
         if (!values.password || !this.passwordRegex.test(values.password)) {
-          console.log(this.passwordRegex.test(values.password));
-          this.error = 'Password required.';
+          this.error = !this.passwordRegex.test(values.password)
+            ? 'Correct password required.'
+            : 'Password required.';
           return;
         }
         const logInBody: ILogIn = {
@@ -64,7 +65,10 @@ export class LoginFormComponent implements OnInit {
         };
         this.subscription.push(
           this.userService.logIn(logInBody).subscribe(
-            (_: any) => {},
+            (_: any) => {
+              console.log('log in successfull', _);
+              this.router.navigate(['/home']);
+            },
             (error: any) => {
               console.error('error in log in.', error);
             }
@@ -83,12 +87,14 @@ export class LoginFormComponent implements OnInit {
           !values.password ||
           !this.passwordRegex.test(values.password)
         ) {
-          this.error = !values.password
-            ? 'Password required.'
-            : 'Password is not strong.';
+          this.error =
+            values.password == ''
+              ? 'Password required.'
+              : 'Password is not strong.';
           return;
         } else if (values.password !== values.confirmPassword) {
           this.error = 'Password does not match.';
+          this.router.navigate(['/home']);
           return;
         } else if (!values.agreeTerms) {
           this.error = 'Please agree with terms & policies.';
@@ -106,6 +112,7 @@ export class LoginFormComponent implements OnInit {
           this.userService.signUp(signUpBody).subscribe(
             (_: any) => {
               this.isLogInForm = true;
+              this.router.navigate(['/home']);
             },
             (error) => {
               console.error(error);
@@ -118,7 +125,9 @@ export class LoginFormComponent implements OnInit {
         this.error = 'something wrong.';
         return;
     }
+  }
 
-    this.router.navigate(['/home']);
+  ngOnDestroy(): void {
+    this.subscription.forEach((sub) => sub.unsubscribe());
   }
 }

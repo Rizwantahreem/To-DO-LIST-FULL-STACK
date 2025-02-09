@@ -22,11 +22,13 @@ try {
 
   console.log("Connected to database:", mongoose.connection.db.databaseName);
 
+  // app.use(cors()); - automatec configuration
+  // Proper CORS setup
   app.use(
     cors({
       origin: "http://localhost:4200",
-      methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-      credentials: true, // Allow cookies if needed
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      credentials: true,
     })
   );
 
